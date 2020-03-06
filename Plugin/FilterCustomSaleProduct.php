@@ -52,7 +52,7 @@ class FilterCustomSaleProduct
         ProductDataProvider $subject,
         $result
     ) {
-        if ($this->intergrateHelper->isAHWGiftCardxist()
+        if ($this->intergrateHelper->isAHWGiftCardExist()
            && $this->intergrateHelper->isIntegrateGC()) {
             $arr = $this->intergrateHelper->getGcIntegrateManagement()->getRefundToGCProductId();
             $result->addFieldToFilter('entity_id', ['neq' => $arr]);
