@@ -67,7 +67,7 @@ class Data
         if (is_null($this->customSalesProductId)) {
             /** @var \Magento\Catalog\Model\Product $productModel */
             $productModel               = $this->productFactory->create();
-            $this->customSalesProductId = $productModel->getResource()->getIdBySku(self::CUSTOM_SALES_PRODUCT_SKU);
+            $this->customSalesProductId = $productModel->getIdBySku(self::CUSTOM_SALES_PRODUCT_SKU);
             if (!$this->customSalesProductId) {
                 $this->customSalesProductId = $this->createNewCustomSalesProduct()->getId();
             }
