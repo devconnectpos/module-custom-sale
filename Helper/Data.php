@@ -108,12 +108,12 @@ class Data
                 'use_config_manage_stock'          => 0, //'Use config settings' checkbox
                 'manage_stock'                     => 0, //manage stock
                 'min_sale_qty'                     => 1, //Minimum Qty Allowed in Shopping Cart
-                'max_sale_qty'                     => 2, //Maximum Qty Allowed in Shopping Cart
+                'max_sale_qty'                     => 999999, //Maximum Qty Allowed in Shopping Cart
                 'is_in_stock'                      => 1, //Stock Availability
                 'qty'                              => 999999, //qty,
                 'original_inventory_qty'           => '999999',
                 'use_config_min_qty'               => '0',
-                'use_config_min_sale_qty'          => '0',
+                'use_config_min_sale_qty'          => '1',
                 'use_config_max_sale_qty'          => '0',
                 'is_qty_decimal'                   => '1',
                 'is_decimal_divided'               => '0',
