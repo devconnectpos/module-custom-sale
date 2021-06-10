@@ -98,7 +98,7 @@ class Data
         $product->setUrlKey(uniqid("custom_sale"));
         $product->setName('Custom Sale');
         $product->setTypeId('simple');
-        $product->setStatus(2);
+        $product->setStatus(1);
         $product->setAttributeSetId($this->getAttributeSetForCustomSalesProduct());
         $product->setSku(self::CUSTOM_SALES_PRODUCT_SKU);
         $product->setVisibility(4);
