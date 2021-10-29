@@ -53,9 +53,9 @@ class Data
         \Magento\Eav\Model\Entity\Type $entityType,
         \Magento\Eav\Model\Entity\Attribute\Set $entityAttrSet
     ) {
-        $this->entityAttrSet  = $entityAttrSet;
-        $this->entityType     = $entityType;
-        $this->appState       = $state;
+        $this->entityAttrSet = $entityAttrSet;
+        $this->entityType = $entityType;
+        $this->appState = $state;
         $this->productFactory = $productFactory;
     }
 
@@ -66,7 +66,7 @@ class Data
     {
         if (is_null($this->customSalesProductId)) {
             /** @var \Magento\Catalog\Model\Product $productModel */
-            $productModel               = $this->productFactory->create();
+            $productModel = $this->productFactory->create();
             $this->customSalesProductId = $productModel->getIdBySku(self::CUSTOM_SALES_PRODUCT_SKU);
             if (!$this->customSalesProductId) {
                 $this->customSalesProductId = $this->createNewCustomSalesProduct()->getId();
@@ -105,6 +105,7 @@ class Data
         $product->setPrice(0);
         $product->setStockData(
             [
+                'status'                           => 1,
                 'use_config_manage_stock'          => 0, //'Use config settings' checkbox
                 'manage_stock'                     => 0, //manage stock
                 'min_sale_qty'                     => 1, //Minimum Qty Allowed in Shopping Cart
@@ -134,12 +135,12 @@ class Data
      */
     public function getAttributeSetForCustomSalesProduct()
     {
-        $productEntityTypeId       = $this->entityType->loadByCode('catalog_product')->getId();
+        $productEntityTypeId = $this->entityType->loadByCode('catalog_product')->getId();
         $eavAttributeSetCollection = $this->entityAttrSet->getCollection();
 
         // FIXME: We will implement setting for admin select attribute set of customer later.
         $eavAttributeSetCollection->addFieldToFilter('attribute_set_name', 'Default')
-                                  ->addFieldToFilter('entity_type_id', $productEntityTypeId);
+            ->addFieldToFilter('entity_type_id', $productEntityTypeId);
 
         $id = $eavAttributeSetCollection->getFirstItem()->getId();
 
@@ -147,8 +148,8 @@ class Data
             $eavAttributeSetCollection = $this->entityAttrSet->getCollection();
 
             return $eavAttributeSetCollection->addFieldToFilter('entity_type_id', $productEntityTypeId)
-                                             ->getFirstItem()
-                                             ->getId();
+                ->getFirstItem()
+                ->getId();
         }
 
         return $id;
